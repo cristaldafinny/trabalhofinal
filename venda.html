@@ -16,36 +16,45 @@
             <li><a href="produtos.html">Produtos</a></li>
             <li><a href="venda.html">Venda</a></li>
             <li><a href="sobre.html">Sobre</a></li>
+                            <li><a href="adm.html">Sobre</a></li>
+
             </ul>
         </nav>
     </header>
 
-    <section class="venda">
-        <div class="venda-container">
-            <h1>Venda seu Videogame</h1>
-            <p>Tem interesse em vender seu videogame? Preencha o formulário abaixo com as informações. Entraremos em contato em breve!</p>
-            <form class="venda-form" action="#" method="POST" enctype="multipart/form-data">
-                <label for="nome">Nome completo:</label>
-                <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
-
-                <label for="telefone">Telefone:</label>
-                <input type="tel" id="telefone" name="telefone" placeholder="(38) 99999-9999" required>
-
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
-
-                <label for="descricao">Descrição do videogame:</label>
-                <textarea id="descricao" name="descricao" placeholder="Modelo, estado, acessórios..." required></textarea>
-
-                <label for="foto">Foto do videogame:</label>
-                <input type="file" id="foto" name="foto" accept="image/*" required>
-
-                <button type="submit" class="btn">Enviar</button>
-            </form>
-        </div>
-    </section>
-
-    <footer>
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal 1</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Show a second modal and hide this one with the button below.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Hide this modal and show the first with the button below.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
+      </div>
+    </div>
+  </div>
+</div>
+<button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Open first modal</button>
     <p>© 2025 RetroPoint</p>
     <div class="social">
       <a href="https://www.instagram.com/cristhianrf_?igsh=MTdwOTMxZjBsZnQ0MA==" target="_blank">📸 Instagram</a>
