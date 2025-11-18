@@ -14,10 +14,10 @@ table { width:100%; border-collapse:collapse; margin-bottom:30px;}
 th,td { border:1px solid #ccc; padding:8px; text-align:center; }
 th { background:#eee; }
 button { padding:5px 10px; margin:2px; border:none; border-radius:5px; cursor:pointer;}
-.add-btn { background:#00cccc; color:#fff; }
-.add-btn:hover { background:#ff00ff; color:#fff;}
-.edit-btn { background:#00cccc; color:#fff;}
-.edit-btn:hover { background:#ff00ff; color:#fff;}
+.add-btn { background:#004d99; color:#fff; }
+.add-btn:hover { background:#cfa800; color:#fff;}
+.edit-btn { background:#004d99; color:#fff;}
+.edit-btn:hover { background:#cfa800; color:#fff;}
 .delete-btn { background:#cc3333; color:#fff;}
 .delete-btn:hover { background:#990000; }
 .table-img { width:60px; border-radius:5px;}
@@ -30,6 +30,7 @@ button { padding:5px 10px; margin:2px; border:none; border-radius:5px; cursor:po
 <main style="padding:20px;">
     <h2>Produtos</h2>
     <button class="add-btn" onclick="adicionarProduto()">Adicionar Produto</button>
+
     <table id="produtosTabela">
         <thead>
             <tr><th>Imagem</th><th>Nome</th><th>Preço</th><th>Ações</th></tr>
@@ -57,12 +58,13 @@ let vendas = [
     {nome:'João Silva', telefone:'38999999999', email:'joao@email.com', descricao:'NES em bom estado', foto:'/css/imgs/nes.jpg'}
 ];
 
-// Funções para exibir dados
+// Exibir produtos
 function atualizarTabelaProdutos(){
     const tbody = document.querySelector('#produtosTabela tbody');
     tbody.innerHTML = '';
     produtos.forEach((p,index)=>{
-        tbody.innerHTML += `<tr>
+        tbody.innerHTML += `
+        <tr>
             <td><img src="${p.img}" class="table-img"></td>
             <td>${p.nome}</td>
             <td>R$ ${p.preco}</td>
@@ -74,11 +76,13 @@ function atualizarTabelaProdutos(){
     });
 }
 
+// Exibir vendas
 function atualizarTabelaVendas(){
     const tbody = document.querySelector('#vendasTabela tbody');
     tbody.innerHTML = '';
     vendas.forEach((v,index)=>{
-        tbody.innerHTML += `<tr>
+        tbody.innerHTML += `
+        <tr>
             <td>${v.nome}</td>
             <td>${v.telefone}</td>
             <td>${v.email}</td>
@@ -92,41 +96,23 @@ function atualizarTabelaVendas(){
     });
 }
 
-// Funções de ação
+// ➤ Ações corrigidas com as páginas certas
 function adicionarProduto(){
-    const nome = prompt("Nome do produto:");
-    const preco = prompt("Preço do produto:");
-    const img = prompt("URL da imagem:");
-    if(nome && preco && img){
-        produtos.push({nome, preco, img});
-        atualizarTabelaProdutos();
-    }
+    window.location.href = "adicionarprod.html";
 }
+
 function editarProduto(i){
-    const nome = prompt("Editar nome:", produtos[i].nome);
-    const preco = prompt("Editar preço:", produtos[i].preco);
-    const img = prompt("Editar URL da imagem:", produtos[i].img);
-    if(nome && preco && img){
-        produtos[i] = {nome, preco, img};
-        atualizarTabelaProdutos();
-    }
+    window.location.href = `editarprod.html?id=${i}`;
 }
+
+function editarVenda(i){
+    window.location.href = `editar-venda.html?id=${i}`;
+}
+
 function excluirProduto(i){
     if(confirm("Deseja realmente excluir este produto?")){
         produtos.splice(i,1);
         atualizarTabelaProdutos();
-    }
-}
-
-function editarVenda(i){
-    const nome = prompt("Editar nome:", vendas[i].nome);
-    const telefone = prompt("Editar telefone:", vendas[i].telefone);
-    const email = prompt("Editar email:", vendas[i].email);
-    const descricao = prompt("Editar descrição:", vendas[i].descricao);
-    const foto = prompt("Editar URL da foto:", vendas[i].foto);
-    if(nome && telefone && email && descricao && foto){
-        vendas[i] = {nome, telefone, email, descricao, foto};
-        atualizarTabelaVendas();
     }
 }
 

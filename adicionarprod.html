@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adicionar Produto</title>
+<link rel="stylesheet" href="css/estilo.css">
+<style>
+body { font-family: "Poppins", sans-serif; background:#f3f3f3; margin:0; padding:0; }
+header { background:#fff; padding:20px; border-bottom:1px solid #ccc; text-align:center; font-weight:bold; }
+.container { max-width:500px; margin:40px auto; background:white; padding:25px; border-radius:10px; box-shadow:0 0 10px #ccc; }
+label { font-weight:bold; margin-top:10px; display:block; }
+input { width:100%; padding:10px; margin-top:5px; border-radius:5px; border:1px solid #ccc; }
+button { margin-top:20px; width:100%; padding:12px; background:#004d99; border:none; border-radius:5px; font-size:16px; cursor:pointer; color:white; }
+button:hover { background:#cfa800; }
+</style>
+</head>
+
+<body>
+
+<header>Adicionar Produto - RetroPoint</header>
+
+<div class="container">
+    <h2>Adicionar Produto</h2>
+
+    <form id="formAdd">
+        <label>Nome do produto:</label>
+        <input type="text" id="nome" required>
+
+        <label>Preço:</label>
+        <input type="text" id="preco" placeholder="Ex: 499,00" required>
+
+        <label>URL da imagem:</label>
+        <input type="text" id="img" required>
+
+        <button type="submit">Salvar Produto</button>
+    </form>
+</div>
+
+<script>
+// Enviar dados ao painel usando localStorage ou integração futura
+document.getElementById("formAdd").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const novo = {
+        nome: document.getElementById("nome").value,
+        preco: document.getElementById("preco").value,
+        img: document.getElementById("img").value
+    };
+
+    let lista = JSON.parse(localStorage.getItem("produtos")) || [];
+    lista.push(novo);
+    localStorage.setItem("produtos", JSON.stringify(lista));
+
+    alert("Produto adicionado!");
+    window.location.href = "painel.html";
+});
+</script>
+
+</body>
+</html>
